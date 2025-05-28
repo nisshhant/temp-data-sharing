@@ -2,12 +2,12 @@ import importlib.util
 import subprocess
 import sys
 import time
-import urllib3
-urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
+
+
 
 
 class SystemInfoCollector:
-    REQUIRED_LIBS = ['psutil', 'requests']
+    REQUIRED_LIBS = ['psutil', 'requests', 'urllib3']
 
     def __init__(self):
         self.install_missing_packages()
@@ -86,6 +86,7 @@ class SystemInfoCollector:
         return info
 
     def run(self):
+        urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
         print("[INFO] Python client is polling for 'start' command...")
         while True:
             try:
