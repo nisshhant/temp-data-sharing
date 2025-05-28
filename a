@@ -33,6 +33,7 @@ class SystemInfoCollector:
         import sys
         import json
         import requests
+        urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
     def get_system_info(self):
         info = {}
@@ -86,7 +87,7 @@ class SystemInfoCollector:
         return info
 
     def run(self):
-        urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
+        
         print("[INFO] Python client is polling for 'start' command...")
         while True:
             try:
